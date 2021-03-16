@@ -5,10 +5,14 @@
     <title>JSP - Hello World</title>
 </head>
 <body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a><br/>
-<a href="Users">Users</a>
+    <h1><%= "Hello World!" %></h1>
+    <br/>
+    <div class="menu">
+        <a href="hello-servlet">Hello Servlet</a> |
+        <a href="Users">Users</a> |
+        <a href="Tournaments">Tournaments</a> |
+        <a href="NewQuestion">New questions</a>
+    </div>
+
 </body>
 </html>

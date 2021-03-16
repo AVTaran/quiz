@@ -29,9 +29,9 @@ public class Users extends HttpServlet {
         out.println("<h1>" + message + "</h1>");
 
         try {
-            out.println("<ul>");
             ResultSet usersRes = db.getUsers();
 
+            out.println("<ul>");
             while (usersRes.next()) {
                 out.println("<li>" +
                         usersRes.getInt("id") + ". " +

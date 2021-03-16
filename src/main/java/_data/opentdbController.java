@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,12 +32,19 @@ public class opentdbController {
     }
 
     @GetMapping("/opentdb/{count}")
-    public String getQuestions(@PathVariable("count") String count){
-        String url ="https://opentdb.com/api.php?amount="+count +"&category=9&difficulty=easy&type=multiple";
-        String jsonRes = restTemplate.getForObject(url,String.class);
-        return jsonRes;
+    public String getQuestions(@PathVariable("count") String count, String cat, String dif, String type) {
+        RestTemplate restTemplate = new RestTemplate();
+        String url = "https://opentdb.com/api.php?"
+                +"amount="+count
+                +"&category="+cat
+                +"&difficulty="+dif
+                +"&type="+type
+        ;
+        ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+        return response.getBody();
     }
 
+    /*
     @GetMapping("/qlist")
     public List<question> getQuestionsList() throws JsonProcessingException {
         //Task
@@ -87,4 +95,5 @@ public class opentdbController {
         return questionsList;
     }
 
+    */
 }
